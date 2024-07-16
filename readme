@@ -10,7 +10,7 @@ Possible Improvements:
 3. Establish database constraints to enforce business rules
 4. Maybe Utilize SQL Cascade deletion rules
 5. Add docstrings (class and method descriptions)
-6. Write comprehensive unit tests plus coving and liniting the code
+6. Write comprehensive unit tests plus coving and linting the code
 7. Improve error messages, especially for duplicate movie entries (title + director)
 8. Use custom exceptions for better error handling and data flow control
 9. Implement pagination to reduce latency
@@ -22,3 +22,10 @@ System Design for Heavy Load:
 3. Consider database replications   (For heavy read workloads)
 4. Consider Geo/Hash Sharding (For heavy write workloads)
 5. Maybe consider CQRS (Command Query Responsibility Segregation) (For heavy read and write workloads)
+
+![Alt text](sc/sc_1.png "sc 1")
+
+![Alt text](sc/sc_2.png "sc 2")
+
+![Alt text](sc/sc_3.png "sc 3")
+
