@@ -23,6 +23,5 @@ System Design for Heavy Load:
 4. Consider Geo or Hash Sharding (For heavy write workloads)
 5. Maybe consider CQRS (Command Query Responsibility Segregation) (For heavy read and write workloads)
 
-<img height="400" src="./sc/sc_1.png">
-<img height="400" src="./sc/sc_2.png">
-<img height="400" src="./sc/sc_3.png">
+![plot](./sc/sc_2.png)
+
