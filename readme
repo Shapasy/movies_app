@@ -1,0 +1,24 @@
+Important Notes:
+1. Must use Python version 3
+2. Start the app: `python3 app.py`
+3. Movie listing command flags: `-t`, `-d`, `-a` (based on SQL-like operators)
+4. Following MVC structure
+
+Possible Improvements:
+1. Consider using an ORM like SQLAlchemy
+2. Implement input validation
+3. Establish database constraints to enforce business rules
+4. Maybe Utilize SQL Cascade deletion rules
+5. Add docstrings (class and method descriptions)
+6. Write comprehensive unit tests plus coving and liniting the code
+7. Improve error messages, especially for duplicate movie entries (title + director)
+8. Use custom exceptions for better error handling and data flow control
+9. Implement pagination to reduce latency
+10. Implement logging to track application behavior
+
+System Design for Heavy Load:
+1. Consider using an Aside Least Frequently Used (LFU) cache (For heavy read workloads)
+2. Creating database indexes on frequently queried columns  (For heavy read workloads)
+3. Consider database replications   (For heavy read workloads)
+4. Consider Geo/Hash Sharding (For heavy write workloads)
+5. Maybe consider CQRS (Command Query Responsibility Segregation) (For heavy read and write workloads)
