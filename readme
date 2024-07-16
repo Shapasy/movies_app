@@ -20,7 +20,7 @@ System Design for Heavy Load:
 1. Consider using an Aside Least Frequently Used (LFU) cache (For heavy read workloads)
 2. Creating database indexes on frequently queried columns  (For heavy read workloads)
 3. Consider database replications   (For heavy read workloads)
-4. Consider Geo/Hash Sharding (For heavy write workloads)
+4. Consider Geo or Hash Sharding (For heavy write workloads)
 5. Maybe consider CQRS (Command Query Responsibility Segregation) (For heavy read and write workloads)
 
 <img height="400" src="./sc/sc_1.png">
