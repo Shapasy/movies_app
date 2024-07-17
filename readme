@@ -2,7 +2,7 @@ Important Notes:
 1. Must use Python version 3
 2. Start the app: `python3 app.py`
 3. Movie listing command flags: `-t`, `-d`, `-a` (based on SQL-like operators)
-4. Following MVC structure
+4. Following MVC structure ( app file is the controller, controller classes are views, view classes are models )
 
 Possible Improvements:
 1. Consider using an ORM like SQLAlchemy
