@@ -4,10 +4,10 @@ from views.movie_view import MovieView
 
 
 class PeopleController(Controller):
-    def __init__(self, db_connection):
-        super().__init__(db_connection)
-        self.movie_view = MovieView(db_connection)
-        self.people_view = PeopleView(db_connection)
+    def __init__(self):
+        super().__init__()
+        self.movie_view = MovieView()
+        self.people_view = PeopleView()
 
     def add_person(self):
         name = self.handle_input(

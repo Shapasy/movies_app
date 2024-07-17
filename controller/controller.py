@@ -1,6 +1,13 @@
+from database.database_handler import database_handler
+
+
 class Controller:
-    def __init__(self, db_connection):
-        self.db_connection = db_connection
+    def __init__(self):
+        if not database_handler.connection:
+            raise ConnectionError(
+                "Can not initiate a Controller without establishing a database connection"
+            )
+        self.db_connection = database_handler.connection
 
     def handle_input(self, input_message, error_message=None, error_condation_method=None):
         target = None

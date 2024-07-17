@@ -1,11 +1,10 @@
 import re
-from database.database_handler import DatabaseHandler
+from database.database_handler import database_handler
 from controller.people_controller import PeopleController
 from controller.movie_controller import MovieController
 
 
 def connect_to_db():
-    database_handler = DatabaseHandler()
     try:
         database_handler.connect()
         database_handler.create_tables()
@@ -16,10 +15,10 @@ def connect_to_db():
         return
 
 if __name__ == "__main__":
-    db_connection = connect_to_db()
+    connect_to_db()
 
-    people_controller = PeopleController(db_connection)
-    movie_controller = MovieController(db_connection)
+    people_controller = PeopleController()
+    movie_controller = MovieController()
 
     while True: # handling commands (The User Interface)
         command = input(">> ")

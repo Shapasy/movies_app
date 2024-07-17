@@ -6,7 +6,7 @@ from models.movie_actors_model import MOVIE_ACTORS_TABLE
 
 
 class DatabaseHandler:
-   def __init__(self) -> None:
+   def __init__(self):
         config = configparser.ConfigParser()
         config.read('config.ini')
         self.database_name = config['database']['name']
@@ -25,3 +25,5 @@ class DatabaseHandler:
       cursor.execute(PEOPLE_TABLE)
       cursor.execute(MOVIE_ACTORS_TABLE)
       self.connection.commit()
+
+database_handler = DatabaseHandler()

@@ -4,10 +4,10 @@ from views.movie_view import MovieView
 
 
 class MovieController(Controller):
-    def __init__(self, db_connection):
-        super().__init__(db_connection)
-        self.movie_view = MovieView(db_connection)
-        self.people_view = PeopleView(db_connection)
+    def __init__(self):
+        super().__init__()
+        self.movie_view = MovieView()
+        self.people_view = PeopleView()
 
     def _is_person_does_not_exist(self, name): # not clean to name the checker method with negative.
         return not self.people_view.is_person_exist(name)

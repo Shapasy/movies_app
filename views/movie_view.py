@@ -3,28 +3,25 @@ from views.view import View
 
 
 class MovieView(View):
-    def __init__(self, database_connection) -> None:
-        super().__init__(database_connection)
-
     def is_director(self, name):
-        self.database_cursor.execute(
+        self.db_cursor.execute(
             "SELECT director FROM movies WHERE director = ? LIMIT 1",
             (name,)
         )
-        return bool(self.database_cursor.fetchone())
+        return bool(self.db_cursor.fetchone())
 
     def add_movie(self, title, director, release_year, length, actors):
         try:
-            self.database_cursor.execute(
+            self.db_cursor.execute(
                 "INSERT INTO movies (title, director, release_year, length) VALUES (?, ?, ?, ?)",
                 (title, director, release_year, length,)
             )
             for actor in actors:
-                self.database_cursor.execute(
+                self.db_cursor.execute(
                     "INSERT INTO movie_actors (movie_title, movie_director, actor_name) VALUES (?, ?, ?)",
                     (title, director, actor,)
                 )
-            self.database_connection.commit()
+            self.db_connection.commit()
             print(f"Added movie {title} by {director} in {release_year}")
         except sqlite3.IntegrityError as ex:
             # it is better to raise custom exceptions here, and then handle it inside controller, it increases code flexibility
@@ -50,19 +47,19 @@ class MovieView(View):
         elif order_by_length == 'desc':
             query += " ORDER BY title DESC"
 
-        self.database_cursor.execute(query)
-        movies = self.database_cursor.fetchall()
+        self.db_cursor.execute(query)
+        movies = self.db_cursor.fetchall()
 
         results = [{'movie': movie} for movie in movies]
 
         if is_with_actors:
             for result in results:
                 title, director, year, _ = result['movie']
-                self.database_cursor.execute(
+                self.db_cursor.execute(
                     "SELECT actor_name, birth_year FROM movie_actors JOIN people ON movie_actors.actor_name = people.name WHERE movie_title = ? AND movie_director = ?",
                     (title, director,)
                 )
-                actors = self.database_cursor.fetchall()
+                actors = self.db_cursor.fetchall()
                 result['actors'] = tuple([{'name' : name, 'age': year-birth_year}  for name, birth_year in actors])
 
         return results
